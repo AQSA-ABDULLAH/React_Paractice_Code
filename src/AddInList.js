@@ -70,7 +70,7 @@ const TodoList = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       <h2>Todo List</h2>
       <div className="input-group mb-3">
         <input
@@ -86,7 +86,7 @@ const TodoList = () => {
       </div>
 
       <h3>Active Todos</h3>
-      <ol className="list-group">
+      <ol className="list-group list-group-numbered">
         {todos.map((todo, index) => (
           <li
             key={index}
@@ -146,7 +146,7 @@ const TodoList = () => {
       </ol>
 
       <h3>Completed Todos</h3>
-      <ol className="list-group">
+      <ol className="list-group list-group-numbered">
         {completedTodos.map((todo, index) => (
           <li
             key={index}
