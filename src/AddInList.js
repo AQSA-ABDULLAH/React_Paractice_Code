@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+import { FaEdit } from "react-icons/fa";
+import { AiTwotoneDelete } from "react-icons/ai";
+import { TiTick } from "react-icons/ti";
+import { RxCrossCircled } from "react-icons/rx";
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
@@ -72,7 +76,7 @@ const TodoList = () => {
   return (
     <div className="container">
       <h2>Todo List</h2>
-      <div className="input-group mb-3">
+      <div className="input-group mb-2 mr-50">
         <input
           type="text"
           className="form-control"
@@ -113,7 +117,7 @@ const TodoList = () => {
                   Save
                 </button>
                 <button
-                  className="btn btn-secondary btn-sm"
+                  className="btn btn-secondary btn-sm m-2"
                   onClick={() => cancelEditing(index)}
                 >
                   Cancel
@@ -122,22 +126,22 @@ const TodoList = () => {
             ) : (
               <>
                 <button
-                  className="btn btn-primary btn-sm me-2"
+                  className="btn btn-primary btn-sm me-2 mr-67"
                   onClick={() => startEditing(index)}
                 >
-                  Edit
+                  <FaEdit />
                 </button>
                 <button
                   className="btn btn-danger btn-sm me-2"
                   onClick={() => removeTodo(index)}
                 >
-                  Remove
+                  <AiTwotoneDelete />
                 </button>
                 <button
                   className="btn btn-warning btn-sm"
                   onClick={() => markCompleted(index)}
                 >
-                  {todo.completed ? 'Mark as Incomplete' : 'Mark as Completed'}
+                  {todo.completed ? <RxCrossCircled/> : <TiTick />}
                 </button>
               </>
             )}
