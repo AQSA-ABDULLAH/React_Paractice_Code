@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { FaEdit } from "react-icons/fa";
-import { AiTwotoneDelete } from "react-icons/ai";
-import { TiTick } from "react-icons/ti";
-import { RxCrossCircled } from "react-icons/rx";
+import { FaEdit } from 'react-icons/fa';
+import { AiTwotoneDelete } from 'react-icons/ai';
+import { TiTick } from 'react-icons/ti';
+import { RxCrossCircled } from 'react-icons/rx';
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
@@ -74,7 +74,7 @@ const TodoList = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container" style={{ margin: '100px' }}>
       <h2>Todo List</h2>
       <div className="input-group mb-2 mr-50">
         <input
@@ -98,53 +98,59 @@ const TodoList = () => {
               todo.completed ? 'text-decoration-line-through' : ''
             }`}
           >
-            {todo.isEditing ? (
-              <input
-                type="text"
-                className="form-control"
-                value={editedTodo}
-                onChange={(e) => setEditedTodo(e.target.value)}
-              />
-            ) : (
-              <span>{todo.text}</span>
-            )}
-            {todo.isEditing ? (
-              <>
-                <button
-                  className="btn btn-success btn-sm"
-                  onClick={() => saveTodo(index)}
-                >
-                  Save
-                </button>
-                <button
-                  className="btn btn-secondary btn-sm m-2"
-                  onClick={() => cancelEditing(index)}
-                >
-                  Cancel
-                </button>
-              </>
-            ) : (
-              <>
-                <button
-                  className="btn btn-primary btn-sm me-2 mr-67"
-                  onClick={() => startEditing(index)}
-                >
-                  <FaEdit />
-                </button>
-                <button
-                  className="btn btn-danger btn-sm me-2"
-                  onClick={() => removeTodo(index)}
-                >
-                  <AiTwotoneDelete />
-                </button>
-                <button
-                  className="btn btn-warning btn-sm"
-                  onClick={() => markCompleted(index)}
-                >
-                  {todo.completed ? <RxCrossCircled/> : <TiTick />}
-                </button>
-              </>
-            )}
+            <div className="d-flex justify-content-between align-items-center">
+              <div>
+                {todo.isEditing ? (
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={editedTodo}
+                    onChange={(e) => setEditedTodo(e.target.value)}
+                  />
+                ) : (
+                  <span>{todo.text}</span>
+                )}
+              </div>
+              <div>
+                {todo.isEditing ? (
+                  <>
+                    <button
+                      className="btn btn-success btn-sm m-2"
+                      onClick={() => saveTodo(index)}
+                    >
+                      Save
+                    </button>
+                    <button
+                      className="btn btn-secondary btn-sm m-2"
+                      onClick={() => cancelEditing(index)}
+                    >
+                      Cancel
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button
+                      className="btn btn-primary btn-sm m-2"
+                      onClick={() => startEditing(index)}
+                    >
+                      <FaEdit />
+                    </button>
+                    <button
+                      className="btn btn-warning btn-sm m-2"
+                      onClick={() => markCompleted(index)}
+                    >
+                      {todo.completed ? <RxCrossCircled /> : <TiTick />}
+                    </button>
+                    <button
+                      className="btn btn-danger btn-sm m-2"
+                      onClick={() => removeTodo(index)}
+                    >
+                      <AiTwotoneDelete />
+                    </button>
+                  </>
+                )}
+              </div>
+            </div>
           </li>
         ))}
       </ol>
