@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { FaEdit } from 'react-icons/fa';
-import { AiTwotoneDelete } from 'react-icons/ai';
-import { TiTick } from 'react-icons/ti';
-import { RxCrossCircled } from 'react-icons/rx';
+import { FaEdit, FaTrash } from 'react-icons/fa';
+import { TiTick, TiTimes } from 'react-icons/ti';
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
@@ -74,9 +72,9 @@ const TodoList = () => {
   };
 
   return (
-    <div className="container" style={{ margin: '100px' }}>
-      <h2>Todo List</h2>
-      <div className="input-group mb-2 mr-50">
+    <div className='container shadow p-5 mb-5 bg-body rounded' style={{ background: 'linear-gradient(to bottom, #f1f1f1, #dddddd)'}}>
+      <h1 className="text-center">TODO LIST</h1>
+      <div className="input-group mb-3 mt-3">
         <input
           type="text"
           className="form-control"
@@ -89,74 +87,72 @@ const TodoList = () => {
         </button>
       </div>
 
-      <h3>Active Todos</h3>
-      <ol className="list-group list-group-numbered">
+      <h3>Active ToDo</h3>
+      <ol className="list-group">
         {todos.map((todo, index) => (
           <li
             key={index}
-            className={`list-group-item ${
+            className={`list-group-item d-flex align-items-center ${
               todo.completed ? 'text-decoration-line-through' : ''
             }`}
           >
-            <div className="d-flex justify-content-between align-items-center">
-              <div>
-                {todo.isEditing ? (
-                  <input
-                    type="text"
-                    className="form-control"
-                    value={editedTodo}
-                    onChange={(e) => setEditedTodo(e.target.value)}
-                  />
-                ) : (
-                  <span>{todo.text}</span>
-                )}
-              </div>
-              <div>
-                {todo.isEditing ? (
-                  <>
-                    <button
-                      className="btn btn-success btn-sm m-2"
-                      onClick={() => saveTodo(index)}
-                    >
-                      Save
-                    </button>
-                    <button
-                      className="btn btn-secondary btn-sm m-2"
-                      onClick={() => cancelEditing(index)}
-                    >
-                      Cancel
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <button
-                      className="btn btn-primary btn-sm m-2"
-                      onClick={() => startEditing(index)}
-                    >
-                      <FaEdit />
-                    </button>
-                    <button
-                      className="btn btn-warning btn-sm m-2"
-                      onClick={() => markCompleted(index)}
-                    >
-                      {todo.completed ? <RxCrossCircled /> : <TiTick />}
-                    </button>
-                    <button
-                      className="btn btn-danger btn-sm m-2"
-                      onClick={() => removeTodo(index)}
-                    >
-                      <AiTwotoneDelete />
-                    </button>
-                  </>
-                )}
-              </div>
+            <div className="flex-grow-1">
+              {todo.isEditing ? (
+                <input
+                  type="text"
+                  className="form-control"
+                  value={editedTodo}
+                  onChange={(e) => setEditedTodo(e.target.value)}
+                />
+              ) : (
+                <span>{todo.text}</span>
+              )}
+            </div>
+            <div>
+              {todo.isEditing ? (
+                <>
+                  <button
+                    className="btn btn-success btn-sm me-2"
+                    onClick={() => saveTodo(index)}
+                  >
+                    <TiTick />
+                  </button>
+                  <button
+                    className="btn btn-secondary btn-sm"
+                    onClick={() => cancelEditing(index)}
+                  >
+                    <TiTimes />
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button
+                    className="btn btn-primary btn-sm me-2"
+                    onClick={() => startEditing(index)}
+                  >
+                    <FaEdit />
+                  </button>
+                  <button
+                    className="btn btn-warning btn-sm me-2"
+                    onClick={() => markCompleted(index)}
+                  >
+                    {todo.completed ? <TiTimes /> : <TiTick />}
+                  </button>
+                  <button
+                    className="btn btn-danger btn-sm"
+                    onClick={() => removeTodo(index)}
+                  >
+                    <FaTrash />
+                  </button>
+                </>
+              )}
             </div>
           </li>
         ))}
       </ol>
 
-      <h3>Completed Todos</h3>
-      <ol className="list-group list-group-numbered">
+      <h3 className='mt-3 text-primary'>Completed ToDo</h3>
+      <ol className="list-group">
         {completedTodos.map((todo, index) => (
           <li
             key={index}

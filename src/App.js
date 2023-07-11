@@ -5,8 +5,8 @@ import '../node_modules/bootstrap/dist/js/bootstrap.bundle';
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
 const App = () => {
   return (
-    <div>
-      <h1>My App</h1>
+    <div style={{ background: 'linear-gradient(to bottom, #f1f1f1, #dddddd)'}}>
+      <h1 className='text-center p-5 mb-2'>TODO LIST IN REACT JS</h1>
       <AddInList />
     </div>
   );
