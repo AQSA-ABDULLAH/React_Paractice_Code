@@ -72,7 +72,7 @@ const TodoList = () => {
   };
 
   return (
-    <div className='container shadow p-5 mb-5 bg-body rounded' style={{ background: 'linear-gradient(to bottom, #f1f1f1, #dddddd)'}}>
+    <div className='container shadow p-5 mb-5 bg-body rounded w-50'>
       <h1 className="text-center">TODO LIST</h1>
       <div className="input-group mb-3 mt-3">
         <input
@@ -87,21 +87,20 @@ const TodoList = () => {
         </button>
       </div>
 
-      <h3>Active ToDo</h3>
-      <ol className="list-group">
+      <ol className="list-group list-group-numbered m-3">
         {todos.map((todo, index) => (
           <li
             key={index}
-            className={`list-group-item d-flex align-items-center ${
-              todo.completed ? 'text-decoration-line-through' : ''
-            }`}
+            className={`d-flex align-items-center mb-3 p-2  ${
+              todo.completed ? '' : ''
+            }`} style={{ background: '#dddddd', borderRadius:"5px"}}
           >
             <div className="flex-grow-1">
               {todo.isEditing ? (
                 <input
                   type="text"
                   className="form-control"
-                  value={editedTodo}
+                  value={ editedTodo}
                   onChange={(e) => setEditedTodo(e.target.value)}
                 />
               ) : (
@@ -156,7 +155,7 @@ const TodoList = () => {
         {completedTodos.map((todo, index) => (
           <li
             key={index}
-            className="list-group-item text-decoration-line-through"
+            className="list-group-item-completed mb-3 p-2 m-2 " style={{ background: '#dddddd', borderRadius:"5px"}}
           >
             {todo.text}
           </li>
