@@ -6,6 +6,8 @@ import '../node_modules/bootstrap/dist/js/bootstrap.bundle';
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
 import All from './Pages/All';
 import Pending from './Pages/Pending';
+import InProgress from './Pages/InProgress';
+import Completed from './Pages/Completed';
 const App = () => {
   return (
     //---------------------------------FOR TO-DO-LIST---------------------------------------
@@ -22,6 +24,8 @@ const App = () => {
         <Routes>
           <Route exact path="/" element={<All />} />
           <Route exact path="/pending" element={<Pending />} />
+          <Route exact path="/InProgress" element={<InProgress />} />
+          <Route exact path="/Completed" element={<Completed />} />
         </Routes>
       </div>
     </Router>
