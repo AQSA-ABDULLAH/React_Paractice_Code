@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+
+.nav.rounded {
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.nav.rounded .nav-item:first-child .nav-link {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.nav.rounded .nav-item:last-child .nav-link {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
